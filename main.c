@@ -6,7 +6,7 @@
 /*   By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:20:02 by ybleiel           #+#    #+#             */
-/*   Updated: 2022/03/18 16:22:18 by ybleiel          ###   ########.fr       */
+/*   Updated: 2022/03/28 12:28:58 by ybleiel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int malloc_stack(char **argv)
 	{
 		str = argv[j];
 		if (str[i++] != 0)
-			d += strlen(str);
+			d += ft_strlen(str);
 		else
 			d++;
 		i = 0;
@@ -72,7 +72,7 @@ void print_stacks(t_pushswap *ps)
 	int n;
 	
 	n = 0;
-	while (n < 13)
+	while (n < 17)
 	{
 		printf("%s %s\n", ps->stack_a[n], ps->stack_b[n]);
 		n++;
@@ -90,13 +90,14 @@ int main(int argc, char **argv)
 	int d;
 	char *str;
 	int i;
-	int a;
+	// int d1;
+	// int d2;
 
 	i = 0;
 	j = 1;
 	n = 0;
 	if (argc <= 1)
-		exit(1);
+		exit(0);
 	d = malloc_stack(argv);
 	ps = malloc(sizeof(t_pushswap));
 	ps->stack_a = malloc(d);
@@ -107,14 +108,12 @@ int main(int argc, char **argv)
 		ps->stack_a[n] = malloc(ft_strlen(argv[j]));
 		ps->stack_a[n] = argv[j];
 		str = argv[j];
-		if (str[i++] != 0)
-			a += strlen(str);
-		else
-			a = str[i] + '0';
+		i = str[i] + '0';
 		i++;
 		n++;
 		j++;
 	}
+	// printf("%d\n", search_smallhalf(ps, ft_atoi(ps->stack_a[2])));
 	check_duplicate(ps);
 	if (check_order(ps) == 0)
 		exit(0);
@@ -126,10 +125,9 @@ int main(int argc, char **argv)
 	else if (j >= 5 && j <= 6)
 		small_sort(ps);
 	else
-	{
-		push_half(ps);
-		big_sort(ps);
-	}
+		big_big_sort(ps);
+	// printf("check");
 	print_stacks(ps);
-	free(ps);
+	// free(ps);
+	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:22:34 by ybleiel           #+#    #+#             */
-/*   Updated: 2022/03/15 13:03:57 by ybleiel          ###   ########.fr       */
+/*   Updated: 2022/03/19 15:59:03 by ybleiel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	reverse_rotate_a(t_pushswap *ps)
 {
 	int	n;
-	int i;
+	int	i;
 
 	n = 0;
 	while (ps->stack_a[n])
@@ -35,7 +35,7 @@ void	reverse_rotate_a(t_pushswap *ps)
 void	reverse_rotate_b(t_pushswap *ps)
 {
 	int	n;
-	int i;
+	int	i;
 
 	n = 0;
 	while (ps->stack_b[n])

@@ -6,7 +6,7 @@
 /*   By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:45:52 by ybleiel           #+#    #+#             */
-/*   Updated: 2022/03/18 16:20:10 by ybleiel          ###   ########.fr       */
+/*   Updated: 2022/03/28 12:28:33 by ybleiel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	reverse_rotate_b(t_pushswap *ps);
 void	reverse_rotate_rotate(t_pushswap *ps);
 int		ft_atoi(const char *str);
 void	big_sort(t_pushswap *ps);
+void	big_sort2(t_pushswap *ps);
 void	small_small_sort(t_pushswap *ps);
 void	check_digit(char *str);
 size_t	ft_strlen(const char *s);
@@ -45,6 +46,12 @@ void	two_sort(t_pushswap *ps);
 void	check_max(t_pushswap *ps);
 int		search_snr(t_pushswap *ps);
 void	push_half(t_pushswap *ps);
-
+int		search_smallhalf(t_pushswap *ps, int d1);
+int		search_snr(t_pushswap *ps);
+int		search_bnr(t_pushswap *ps);
+void	quick_sort(t_pushswap *ps);
+void	print_stacks(t_pushswap *ps);
+void	push_smallhalf(t_pushswap *ps);
+void	big_big_sort(t_pushswap *ps);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 11:11:09 by ybleiel           #+#    #+#             */
-/*   Updated: 2022/03/10 16:08:00 by ybleiel          ###   ########.fr       */
+/*   Updated: 2022/03/19 15:59:18 by ybleiel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	swap_a(t_pushswap *ps)
 
 void	swap_b(t_pushswap *ps)
 {
-	int n;
+	int	n;
 
 	n = 0;
 	if (!ps->stack_b[0] || !ps->stack_b[1])
