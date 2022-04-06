@@ -6,15 +6,15 @@
 #    By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 13:10:38 by ybleiel           #+#    #+#              #
-#    Updated: 2022/03/28 12:28:42 by ybleiel          ###   ########.fr        #
+#    Updated: 2022/04/05 15:04:33 by ybleiel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME	= push_swap
 
-SRCS	=  main.c sort.c quicksort.c bigbigsort.c utils.c cmds/push.c utils_utils.c \
-			cmds/reverse_rotate.c cmds/rotate.c cmds/swap.c cleansort.c \
+SRCS	=  main.c radix_sort.c index_sort.c utils.c small_sort.c cmds/push.c \
+			cmds/reverse_rotate.c cmds/rotate.c cmds/swap.c check.c \
 
 OBJS	= $(SRCS:.c=.o)
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bigbigsort.c                                       :+:      :+:    :+:   */
+/*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 11:58:10 by ybleiel           #+#    #+#             */
-/*   Updated: 2022/03/28 13:54:30 by ybleiel          ###   ########.fr       */
+/*   Updated: 2022/04/05 16:46:51 by ybleiel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	search_bit(int d1, int a)
 {
-	printf("%d\n", a);
 	if ((d1 & a) == a)
 	{
 		return (1);
@@ -25,38 +24,61 @@ int	search_bit(int d1, int a)
 	}
 }
 
-void	big_big_sort(t_pushswap *ps)
+int	find_indexnr(t_pushswap *ps, int nr, int len)
 {
-	int i;
-	int d1;
-	int a;
-	int n;
+	int	i;
+
+	i = 0;
+	while (i < (len - 1))
+	{
+		if (ps->index[i] == nr)
+			break ;
+		i++;
+	}
+	return (i);
+}
+
+static int	max_bits(t_pushswap *ps)
+{
+	int	i;
+	int	max_bits;
+
+	i = 0;
+	max_bits = 1;
+	while (ps->stack_a[i])
+		i++;
+	while (i != 0)
+	{
+		max_bits <<= 1;
+		i >>= 1;
+	}
+	return (max_bits);
+}
+
+void	big_sort(t_pushswap *ps)
+{
+	int	i;
+	int	d1;
+	int	a;
+	int	n;
+	int	mb;
 
 	i = 0;
 	a = 1;
-	n = 0;
-	while (a <= 4)
+	mb = max_bits(ps);
+	n = count_elements(ps);
+	while (a < mb)
 	{
-		
-		while (ps->stack_a[i])
+		while (i < n)
 		{
-			d1 = ft_atoi(ps->stack_a[0]);
+			d1 = find_indexnr(ps, ft_atoi(ps->stack_a[0]), n);
 			if (search_bit(d1, a) == 0)
-			{
 				push_b(ps);
-				i = 0;
-			}
 			else
-			{
-				reverse_rotate_a(ps);
-			}
+				rotate_a(ps);
 			i++;
 		}
-		print_stacks(ps);
-		while (ps->stack_b[0])
-		{
-			push_a(ps);
-		}
+		push_stackb(ps);
 		a = a << 1;
 		i = 0;
 	}
