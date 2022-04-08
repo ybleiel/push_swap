@@ -6,7 +6,7 @@
 #    By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/14 13:10:38 by ybleiel           #+#    #+#              #
-#    Updated: 2022/04/05 15:04:33 by ybleiel          ###   ########.fr        #
+#    Updated: 2022/04/07 16:32:16 by ybleiel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,16 +18,14 @@ SRCS	=  main.c radix_sort.c index_sort.c utils.c small_sort.c cmds/push.c \
 
 OBJS	= $(SRCS:.c=.o)
 
-HEADER	= push_swap.h
-
 CC		= gcc
 
-CFLACS 	= -Wall -Werror -Wextra
+CFLAGS 	= -Wall -Werror -Wextra
 
 all: $(NAME)
 
 $(NAME): $(SRCS)
-	$(CC) $(CFLACS) $^ -o $(NAME)
+	$(CC) $(CFLAGS) $^ -o $(NAME)
 	
 fclean: 
 	rm -f $(NAME) $(OBJS) 

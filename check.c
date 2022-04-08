@@ -6,7 +6,7 @@
 /*   By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:45:00 by ybleiel           #+#    #+#             */
-/*   Updated: 2022/04/05 16:46:35 by ybleiel          ###   ########.fr       */
+/*   Updated: 2022/04/08 13:10:16 by ybleiel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ void	check_duplicate(t_pushswap *ps)
 
 	i = 0;
 	n = 0;
-	while (ps->stack_a[i])
+	while (i < count_elements(ps))
 	{
-		while (ps->stack_a[n])
+		while (n < count_elements(ps) && i < (count_elements(ps) - 1))
 		{
 			if (n == i)
 				n++;
@@ -83,11 +83,12 @@ void	check_duplicate(t_pushswap *ps)
 			if (d1 == d2)
 			{
 				write(1, "Error\n", 6);
-				exit(0);
+				exit(1);
 			}
 			n++;
 		}
 		i++;
+		n = 0;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:50:31 by ybleiel           #+#    #+#             */
-/*   Updated: 2022/04/05 15:28:16 by ybleiel          ###   ########.fr       */
+/*   Updated: 2022/04/08 13:26:12 by ybleiel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,28 +66,27 @@ void	small_ifs(t_pushswap *ps)
 void	small_sort(t_pushswap *ps)
 {
 	int	i;
-	int	n;
-	int	d1;
-	int	d2;
+	int n;
+	int d1;
 
-	i = 1;
-	n = 0;
-	while (ps->stack_a[n])
-		n++;
-	while (ps->stack_a[i])
+	i = 0;
+	n = count_elements(ps);
+	while (n > 3)
 	{
-		d1 = ft_atoi(ps->stack_a[0]);
-		d2 = ft_atoi(ps->stack_a[i]);
-		if (d1 > d2)
+		d1 = search_snr(ps);
+		if (d1 == 0)
 		{
-			rotate_a(ps);
-			i = 0;
+			push_b(ps);
+			n--;
 		}
-		i++;
+		else if (d1 > (n / 2))
+			reverse_rotate_a(ps);
+		else
+			rotate_a(ps);
 	}
-	if (n > 3)
-		small_ifs(ps);
 	small_small_sort(ps);
+	push_a(ps);
+	push_a(ps);
 }
 
 void	two_sort(t_pushswap *ps)

@@ -6,7 +6,7 @@
 /*   By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:20:02 by ybleiel           #+#    #+#             */
-/*   Updated: 2022/04/05 16:58:59 by ybleiel          ###   ########.fr       */
+/*   Updated: 2022/04/08 14:37:43 by ybleiel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <string.h>
 #include "push_swap.h"
 
-int	malloc_stack(char **argv)
+int	stack_size(char **argv)
 {
 	int		i;
 	int		j;
@@ -24,8 +24,7 @@ int	malloc_stack(char **argv)
 
 	i = 0;
 	j = 1;
-	if (!argv[j])
-		d = 0;
+	d = 0;
 	while (argv[j])
 	{
 		str = argv[j];
@@ -39,14 +38,24 @@ int	malloc_stack(char **argv)
 	return (d);
 }
 
-void	main_malloc(t_pushswap *ps, char **argv)
+void	malloc_ps(t_pushswap *ps, char **argv)
 {
 	int	d;
 
-	d = malloc_stack(argv);
-	ps->stack_a = malloc(d);
-	ps->stack_b = malloc(d);
-	ps->index = malloc(d);
+	d = stack_size(argv);
+	// printf("%d\n", sizeof(d));
+	ps->stack_a = malloc(sizeof(char **) * d);
+	ps->stack_b = malloc(sizeof(char **) * d);
+	ps->index = malloc(sizeof(int *) * d);
+}
+
+void	free_ps(t_pushswap *ps)
+{
+	free(ps);
+	free(ps->stack_a);
+	free(ps->stack_b);
+	free(index);
+	exit(0);
 }
 
 void	main_sort(t_pushswap *ps, int j)
@@ -79,7 +88,7 @@ int	main(int argc, char **argv)
 	if (argc <= 1)
 		exit(0);
 	ps = malloc(sizeof(t_pushswap));
-	main_malloc(ps, argv);
+	malloc_ps(ps, argv);
 	while (argv[j])
 	{
 		check_digit(argv[j]);
@@ -92,4 +101,5 @@ int	main(int argc, char **argv)
 	}
 	main_sort(ps, j);
 	exit(0);
+	free_ps(ps);
 }
