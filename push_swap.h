@@ -6,7 +6,7 @@
 /*   By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:45:52 by ybleiel           #+#    #+#             */
-/*   Updated: 2022/04/05 16:47:38 by ybleiel          ###   ########.fr       */
+/*   Updated: 2022/04/22 14:12:45 by ybleiel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	small_sort(t_pushswap *ps);
 void	push_back(t_pushswap *ps);
 int		check_order(t_pushswap *ps);
 void	two_sort(t_pushswap *ps);
-void	check_max(unsigned int j, int m);
+void	check_max(unsigned long j, int m);
 void	check_duplicate(t_pushswap *ps);
 int		search_snr(t_pushswap *ps);
 void	print_stacks(t_pushswap *ps);
@@ -50,5 +50,6 @@ void	big_sort(t_pushswap *ps);
 void	index_sort(t_pushswap *ps);
 void	push_stackb(t_pushswap *ps);
 int		count_elements(t_pushswap *ps);
+void	free_ps(t_pushswap *ps);
 
 #endif

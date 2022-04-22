@@ -6,7 +6,7 @@
 /*   By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:45:00 by ybleiel           #+#    #+#             */
-/*   Updated: 2022/04/08 13:10:16 by ybleiel          ###   ########.fr       */
+/*   Updated: 2022/04/22 15:30:41 by ybleiel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ void	check_digit(char *str)
 	i = 0;
 	while (str[i])
 	{
+		if (str[i] == '-')
+		{
+			if (str[i++] == 0)
+			{
+				write(1, "Error\n", 6);
+				exit(1);
+			}
+		}
 		if (ft_isdigit(str[i]) != 1)
 		{
 			write(1, "Error\n", 6);
@@ -34,6 +42,7 @@ void	check_digit(char *str)
 		}
 		i++;
 	}
+	ft_atoi(str);
 }
 
 int	check_order(t_pushswap *ps)
@@ -83,7 +92,7 @@ void	check_duplicate(t_pushswap *ps)
 			if (d1 == d2)
 			{
 				write(1, "Error\n", 6);
-				exit(1);
+				free_ps(ps);
 			}
 			n++;
 		}
@@ -92,11 +101,11 @@ void	check_duplicate(t_pushswap *ps)
 	}
 }
 
-void	check_max(unsigned int j, int m)
+void	check_max(unsigned long j, int m)
 {
 	if ((j > 2147483648 && m == -1) || (j > 2147483647 && m == 1))
 	{
 		write(1, "Error\n", 6);
-		exit(0);
+		exit(1);
 	}
 }

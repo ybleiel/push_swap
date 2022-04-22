@@ -6,7 +6,7 @@
 /*   By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 15:50:31 by ybleiel           #+#    #+#             */
-/*   Updated: 2022/04/08 13:26:12 by ybleiel          ###   ########.fr       */
+/*   Updated: 2022/04/21 10:53:50 by ybleiel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,9 @@ void	small_ifs(t_pushswap *ps)
 
 void	small_sort(t_pushswap *ps)
 {
-	int	i;
-	int n;
-	int d1;
+	int	n;
+	int	d1;
 
-	i = 0;
 	n = count_elements(ps);
 	while (n > 3)
 	{

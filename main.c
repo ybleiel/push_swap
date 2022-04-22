@@ -6,7 +6,7 @@
 /*   By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:20:02 by ybleiel           #+#    #+#             */
-/*   Updated: 2022/04/11 13:42:57 by ybleiel          ###   ########.fr       */
+/*   Updated: 2022/04/21 10:56:36 by ybleiel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,22 @@
 #include <string.h>
 #include "push_swap.h"
 
-int	stack_size(char **argv)
+void	malloc_ps(t_pushswap *ps, int argc)
 {
-	int		i;
-	int		j;
-	int		d;
-	char	*str;
-
-	i = 0;
-	j = 1;
-	d = 0;
-	while (argv[j])
-	{
-		str = argv[j];
-		if (str[i++] != 0)
-			d += ft_strlen(str);
-		else
-			d++;
-		i = 0;
-		j++;
-	}
-	return (d);
-}
-
-void	malloc_ps(t_pushswap *ps, char **argv)
-{
-	int	d;
-
-	d = stack_size(argv);
-	ps->stack_a = malloc(sizeof(char *) * d);
-	ps->stack_b = malloc(sizeof(char *) * d);
-	ps->index = malloc(sizeof(int) * d);
+	ps->stack_a = malloc(argc * sizeof(char *));
+	ps->stack_a[argc - 1] = NULL;
+	ps->stack_b = malloc(argc * sizeof(char *));
+	ps->stack_b[argc - 1] = NULL;
+	ps->index = malloc(argc * sizeof(int));
+	ps->index[argc - 1] = 0;
 }
 
 void	free_ps(t_pushswap *ps)
 {
-	int i;
-
-	i = 0;
-	while (ps->stack_a[i])
-	{
-		free(ps->stack_a[i]);
-		i++;
-	}
-	free(ps);
 	free(ps->stack_a);
 	free(ps->stack_b);
 	free(ps->index);
+	exit(0);
 }
 
 void	main_sort(t_pushswap *ps, int j)
@@ -82,26 +51,23 @@ void	main_sort(t_pushswap *ps, int j)
 
 int	main(int argc, char **argv)
 {
-	t_pushswap	*ps;
+	t_pushswap	ps;
 	int			j;
 	int			n;
 
 	j = 1;
 	n = 0;
-	if (argc <= 2)
+	if (argc <= 1)
 		return (0);
-	ps = malloc(sizeof(t_pushswap));
-	malloc_ps(ps, argv);
+	malloc_ps(&ps, argc);
 	while (argv[j])
 	{
 		check_digit(argv[j]);
-		ps->stack_a[n] = malloc(ft_strlen(argv[j]));
-		ps->stack_a[n] = argv[j];
+		ps.stack_a[n] = argv[j];
 		n++;
 		j++;
 	}
-	main_sort(ps, j);
-	free_ps(ps);
+	main_sort(&ps, j);
+	free_ps(&ps);
 	return (0);
-	exit(0);
 }

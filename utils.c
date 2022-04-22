@@ -6,7 +6,7 @@
 /*   By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 12:48:25 by ybleiel           #+#    #+#             */
-/*   Updated: 2022/04/05 16:47:01 by ybleiel          ###   ########.fr       */
+/*   Updated: 2022/04/22 14:12:23 by ybleiel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	ft_atoi(const char *str)
 	{
 		j = (j * 10) + (str[i] - '0');
 		i++;
+		check_max(j, m);
 	}
-	check_max(j, m);
 	return (j * m);
 }
 

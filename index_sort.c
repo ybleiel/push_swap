@@ -6,7 +6,7 @@
 /*   By: ybleiel <ybleiel@student.42wolfsburg.de>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 11:50:33 by ybleiel           #+#    #+#             */
-/*   Updated: 2022/04/21 11:10:31 by ybleiel          ###   ########.fr       */
+/*   Updated: 2022/04/05 16:34:10 by ybleiel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 int	smaller_zero(t_pushswap *ps, int n, int d1, int d2)
 {
 	int	j;
-	int test;
 
 	j = 0;
-	test = 0;
 	while (ps->index[j])
 	{
 		if (d1 == ps->index[j] || (d1 > d2 && d2 > ps->index[n]))
